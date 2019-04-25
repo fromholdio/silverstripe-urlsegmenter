@@ -1,0 +1,27 @@
+{
+    "name": "fromholdio/silverstripe-urlsegmenter",
+    "type": "silverstripe-vendormodule",
+    "description": "Adds an extension to add a URLSegment to any SilverStripe DataObject and manages slug collisions",
+    "license": "BSD-3-Clause",
+    "keywords": ["silverstripe", "url", "urlsegment"],
+    "homepage": "https://github.com/fromholdio/silverstripe-urlsegmenter",
+    "support": {
+        "issues": "https://github.com/fromholdio/silverstripe-urlsegmenter/issues"
+    },
+    "authors": [{
+        "name": "Luke Fromhold",
+        "homepage": "https://fromhold.io"
+    }],
+    "require": {
+        "php": ">=5.6",
+        "silverstripe/vendor-plugin": "^1.0",
+        "silverstripe/framework": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fromholdio\\URLSegmenter\\": "src/"
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
