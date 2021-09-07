@@ -5,6 +5,7 @@ namespace Fromholdio\URLSegmenter\Extensions;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataList;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 
 class URLSegmenter extends DataExtension
@@ -55,31 +56,37 @@ class URLSegmenter extends DataExtension
 
     public function generateURLSegment($increment = 0)
     {
-        if ($this->getOwner()->hasMethod('getURLSegmenterScope')) {
+        $scope = $this->getOwner()->hasMethod('getSortableScope')
+            ? $this->getOwner()->getSortableScope()
+            : get_class($this->getOwner())::get();
 
-            $increment = (int) $increment;
-            $filter = URLSegmentFilter::create();
-            $filter->setAllowMultibyte(true);
-
-            $this->getOwner()->URLSegment = $filter->filter($this->getOwner()->Title);
-            if (!$this->getOwner()->URLSegment) {
-                $this->getOwner()->URLSegment = $filter->filter(
-                    'New ' . $this->getOwner()->i18n_singular_name()
-                );
+        if (is_a($scope, DataList::class) && $scope->count() > 0) {
+            if ($this->getOwner()->isInDB()) {
+                $scope = $scope->exclude('ID', $this->getOwner()->ID);
             }
-
-            if ($increment > 0) {
-                $this->getOwner()->URLSegment .= '-' . $increment;
-            }
-
-            $scope = $this->getOwner()->getURLSegmenterScope();
-            $duplicates = $scope->filter('URLSegment', $this->getOwner()->URLSegment);
-
-            if ($duplicates->count() > 0) {
-                $this->getOwner()->generateURLSegment($increment + 1);
-            }
-
-            return $this->getOwner()->URLSegment;
         }
+
+        $increment = (int) $increment;
+        $filter = URLSegmentFilter::create();
+        $filter->setAllowMultibyte(true);
+
+        $this->getOwner()->URLSegment = $filter->filter($this->getOwner()->Title);
+        if (!$this->getOwner()->URLSegment) {
+            $this->getOwner()->URLSegment = $filter->filter(
+                'New ' . $this->getOwner()->i18n_singular_name()
+            );
+        }
+
+        if ($increment > 0) {
+            $this->getOwner()->URLSegment .= '-' . $increment;
+        }
+
+        $duplicates = $scope->filter('URLSegment', $this->getOwner()->URLSegment);
+
+        if ($duplicates->count() > 0) {
+            $this->getOwner()->generateURLSegment($increment + 1);
+        }
+
+        return $this->getOwner()->URLSegment;
     }
 }
