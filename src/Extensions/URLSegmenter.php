@@ -56,7 +56,7 @@ class URLSegmenter extends DataExtension
 
     public function generateURLSegment($increment = 0)
     {
-        $scope = $this->getOwner()->hasMethod('getSortableScope')
+        $scope = $this->getOwner()->hasMethod('getURLSegmenterScope')
             ? $this->getOwner()->getSortableScope()
             : get_class($this->getOwner())::get();
 
