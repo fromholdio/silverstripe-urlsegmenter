@@ -114,7 +114,7 @@ class URLSegmenter extends DataExtension
     {
         $method = $this->getOwner()->config()->get('urlsegmenter_source_method_name');
         $method = empty($method) ? null : $method;
-        if (!$this->getOwner()->hasMethod($method)) {
+        if (!is_null($method) && !$this->getOwner()->hasMethod($method)) {
             throw new \UnexpectedValueException(
                 'The $urlsegmenter_source_method_name on ' . get_class($this->getOwner())
                 . ' does not match a valid method name.'
