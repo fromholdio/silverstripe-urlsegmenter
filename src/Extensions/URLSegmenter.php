@@ -137,10 +137,10 @@ class URLSegmenter extends DataExtension
                 );
             }
 
-            $dbObject = $this->getOwner()->dbObject($name);
+            $dbObject = $this->getOwner()->dbObject($fieldName);
             if (!$dbObject) {
                 throw new \UnexpectedValueException(
-                    'The $urlsegmenter_source_field_name on ' . get_class($this->getOwner())
+                    'The $urlsegmenter_source_field_name "' . $fieldName .'" on ' . get_class($this->getOwner())
                     . ' does not match a valid dbObject name.'
                 );
             }
@@ -151,7 +151,6 @@ class URLSegmenter extends DataExtension
 
     public function getURLSegmenterSourceValue(): string
     {
-        $value = null;
         $method = $this->getOwner()->getURLSegmenterSourceMethodName();
         if (!is_null($method)) {
             $value = $this->getOwner()->{$method}();
