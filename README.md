@@ -15,6 +15,22 @@ SilverStripe 4
 
 `composer require fromholdio/silverstripe-urlsegmenter`
 
+## Upgrading from 1.x/2.x to 3.x
+
+There are new config variables, which maintain the same default effect, however if you are overriding them in your projects you will need to update to the new variable names:
+
+```
+private static $urlsegmenter_force_title = true;
+private static $urlsegmenter_enable_field = false;
+```
+
+Are now toggled via:
+
+```
+private static $urlsegmenter_forced = true;
+private static $urlsegmenter_cmsfield_enabled = false;
+```
+
 ## Usage example
 
 It's all plug-n-play once you apply the extension to your data object - with one exception.
