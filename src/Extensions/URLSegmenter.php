@@ -24,7 +24,7 @@ class URLSegmenter extends DataExtension
      * @var bool
      * @see URLSegmentFilter::$default_allow_multibyte
      */
-    private static $urlsegmenter_allow_multibyte = true;
+    private static $urlsegmenter_allow_multibyte = false;
 
     /**
      * DB field in which to store the resulting URLSegment value.
