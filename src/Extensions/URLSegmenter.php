@@ -7,7 +7,6 @@ use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\ReadonlyField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataList;
-use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\Forms\TextField;
 
