@@ -9,7 +9,7 @@ That is, it does the basic lifting of:
 
 ## Requirements
 
-SilverStripe 4
+SilverStripe 4 or 5
 
 ## Installation
 
