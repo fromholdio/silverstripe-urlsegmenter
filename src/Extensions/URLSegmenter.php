@@ -2,15 +2,15 @@
 
 namespace Fromholdio\URLSegmenter\Extensions;
 
+use SilverStripe\Core\Extension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\ReadonlyField;
-use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataList;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 use SilverStripe\Forms\TextField;
 
-class URLSegmenter extends DataExtension
+class URLSegmenter extends Extension
 {
     /**
      * Should URLSegment be forced to match source value

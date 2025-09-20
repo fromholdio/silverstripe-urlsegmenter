@@ -9,13 +9,15 @@ That is, it does the basic lifting of:
 
 ## Requirements
 
-SilverStripe 4 or 5
+SilverStripe 6.x
+
+(See branch 3.x for Silverstripe 4 & 5 support.)
 
 ## Installation
 
 `composer require fromholdio/silverstripe-urlsegmenter`
 
-## Upgrading from 1.x/2.x to 3.x
+## Upgrading from 1.x/2.x to 3.x/4.x
 
 There are new config variables, which maintain the same default effect, however if you are overriding them in your projects you will need to update to the new variable names:
 
