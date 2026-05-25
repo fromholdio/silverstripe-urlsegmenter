@@ -79,6 +79,9 @@ class URLSegmenter extends Extension
         'URLSegment' => 'URL Segment'
     ];
 
+    private static $indexes = [
+        'URLSegment' => true,
+    ];
 
     public function isURLSegmenterForced(): bool
     {
